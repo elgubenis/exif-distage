@@ -38,3 +38,6 @@ distage.parse('image.jpg', new Date(), [19.003725787037036, 99.00135592592591], 
     distance: 1000000
 }
 ```
+
+## License
+MIT

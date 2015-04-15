@@ -1,6 +1,6 @@
 {
   "name": "exif-distage",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Get age in h:m:s format (from a supplied dateTime) and distance in meters (from supplied GPS lat, lon) of an image with an EXIF source.",
   "main": "lib/index.js",
   "scripts": {
