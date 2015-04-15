@@ -15,8 +15,8 @@ module.exports = (data, date, cb) ->
       seconds = dataDate.getTime()
       passed = (date-seconds)/1000
       passedObj = { age: String(passed).toHHMMSS() }
-      passedObj.queryTimestamp = date/1000
-      passedObj.creationTimestamp = seconds/1000
+      passedObj.queryTimestamp = Math.round(date/1000, 0)
+      passedObj.creationTimestamp = Math.round(seconds/1000, 0)
 
       return cb null, passedObj
   return cb new Error 'Wrong date format (YYYY-MM-DD HH:MM:SS)'
