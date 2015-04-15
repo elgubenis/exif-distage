@@ -62,7 +62,6 @@ describe('Gets the age and distance of an image', function() {
     var date = new Date('2015-04-14 10:12:53');
     var fakePoint = getPointAtDistance(19.003725787037036, 99.00135592592591, 90, 1000000);
     distage.parse(testImage, date, fakePoint, function(err, response) {
-      console.log(response);
       if (response.age.h === 1 && response.distance === 1000000) {
         done();
       }

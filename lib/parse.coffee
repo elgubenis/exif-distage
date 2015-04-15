@@ -25,13 +25,18 @@ module.exports = (imagePath, date, latlon, cb) ->
   if newDate? then date = newDate
   # todo end
 
-  exif imagePath, (err, data) ->
-    if err then return cb err
-    result = {}
+  if date? || latlon?
+    exif imagePath, (err, data) ->
+      if !data then err = new Error 'No exif data on image'
+      if err then return cb err
+      result = {}
 
-    if date? then await age data, date, defer err, ageResponse
-    if latlon? then await distance data, latlon, defer err, distanceResponse
+      if date? then await age data, date, defer err, ageResponse
+      if latlon? then await distance data, latlon, defer err, distanceResponse
 
-    _.extend result, ageResponse
-    _.extend result, distanceResponse
-    return cb null, result
+      _.extend result, ageResponse
+      _.extend result, distanceResponse
+      return cb null, result
+  else
+    return cb new Error 'No date or position supplied'
+
