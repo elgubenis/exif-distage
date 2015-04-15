@@ -1,5 +1,3 @@
-ExifImage = require('exif').ExifImage
-
 module.exports = (data, coordinates, cb) ->
   if data.gps?
     lat = data.gps.GPSLatitude

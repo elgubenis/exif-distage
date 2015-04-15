@@ -1,6 +1,5 @@
-ExifImage = require('exif').ExifImage
-
 module.exports = (data, date, cb) ->
+  console.log data
   date = date.getTime()
   data = (if data.image? then data.image.ModifyDate) || (if data.exif? then data.exif.DateTimeOriginal)
 
