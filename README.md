@@ -4,13 +4,11 @@ Get age in **h:m:s** format (from a supplied dateTime) and/or distance in meters
 
 ### Install
 ```sh
-$ cd /your/project-folder
 $ npm install exif-distage --save
 ```
 
-### Testing
+### Testing (with mocha)
 ```sh
-$ sudo install -g mocha
 $ cd /node_modules/exif-distage
 $ npm test
 ```
@@ -25,6 +23,28 @@ distage.parse('image.jpg', new Date(), [19.003725787037036, 99.00135592592591], 
   console.log(response);
 });
 ```
+```javascript
+var distage = require('exif-distage');
+distage.parse('image.jpg', [19.003725787037036, 99.00135592592591], new Date(), function(err, response) {
+  if (err) { throw err };
+  console.log(response);
+});
+```
+```javascript
+var distage = require('exif-distage');
+distage.parse('image.jpg', [19.003725787037036, 99.00135592592591], function(err, response) {
+  if (err) { throw err };
+  console.log(response);
+});
+```
+```javascript
+var distage = require('exif-distage');
+distage.parse('image.jpg', new Date(), function(err, response) {
+  if (err) { throw err };
+  console.log(response);
+});
+```
+
 ##### should return an object similar to this
 ```javascript
 {

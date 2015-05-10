@@ -6,11 +6,11 @@ distance  = require './distance'
 module.exports = (imagePath, date, latlon, cb) ->
 
   # todo, make this more simple
-  if (date !instanceof Date && date instanceof Array)
+  if date instanceof Array
     newLatlon = date
     date = null
 
-  if (latlon !instanceof Array && latlon instanceof Date)
+  if latlon instanceof Date
     newDate = latlon
     latlon = null
 
@@ -25,14 +25,17 @@ module.exports = (imagePath, date, latlon, cb) ->
   if newDate? then date = newDate
   # todo end
 
-  if date? || latlon?
+  if date? or latlon?
     exif imagePath, (err, data) ->
       if !data then err = new Error 'No exif data on image'
       if err then return cb err
       result = {}
 
-      if date? then await age data, date, defer err, ageResponse
-      if latlon? then await distance data, latlon, defer err, distanceResponse
+      await
+        if date?
+          age data, date, defer err, ageResponse
+        if latlon?
+          distance data, latlon, defer err, distanceResponse
 
       _.extend result, ageResponse
       _.extend result, distanceResponse
